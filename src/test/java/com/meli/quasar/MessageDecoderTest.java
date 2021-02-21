@@ -19,26 +19,39 @@ public class MessageDecoderTest {
 			{new String[][]{{"este","", "un", "mensaje"},
 							{"","es", "un", "mensaje"},
 							{"","", "un", "mensaje"}}, "este es un mensaje"},
+			
 			{new String[][]{{"","", "un", "mensaje"},
 							{"","es", "un", "mensaje"},
-							{"","", "un", "mensaje"}}, ""},
+							{"","", "un", "mensaje"}}, null},
+			
 			{new String[][]{{"","", "un", "mensaje"},
 							{"","es", "un", "mensaje"},
-							{"","", "un", "mensaje"}}, ""},
+							{"","", "un", "mensaje"}}, null},
+			
 			{new String[][]{{"","este","", "un", "mensaje"},
 							{"","","","es", "un", "mensaje"},
 							{"","", "un", "mensaje"}}, "este es un mensaje"},
+			
 			{new String[][]{{""},
 							{"","es", "un", "mensaje"},
-							{"","", "un", "mensaje"}}, "mensaje"}, //ver este caso
-			{new String[][]{{"","", "un", "mensaje"}}, ""},
+							{"","", "un", "mensaje"}}, null}, //ver este caso
+			
+			{new String[][]{{"","", "un", "mensaje"}}, null},
+			
 			{new String[][]{{"este","es", "un", "mensaje"}}, "este es un mensaje"},
+			
 			{new String[][]{{"","", "", ""},
 							{"","", "", ""},
 							{"este","es", "un", "mensaje"}}, "este es un mensaje"},
+			
 			{new String[][]{{"","", "", ""},
-				{"","", "", ""},
-				{"este","es", "un", "mensaje"}}, "este es un mensaje"},
+							{"","", "", ""},
+							{"","es", "un", "mensaje"}}, null},
+			
+			{new String[][]{{"","", "", ""},
+							{"","", "", ""},
+							{"","", "", ""}}, null},
+			
 			{new String[][]{}, ""},
 		
 		});

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 /*Decodificador del mensaje.*/
 
 public class MessageDecoder {
-	
-	public static String GetMessage(String[] ...messages) {
-		
+
+	public static String GetMessage(String[]... messages) {
+
 		int largo = 0;
 
 		for (int y = 0; y < messages.length; y++) {
@@ -19,7 +19,17 @@ public class MessageDecoder {
 				}
 			}
 		}
-		
+
+		for (int y = 0; y < messages.length; y++) {
+			if (messages[y].length > largo) {
+				for (int x = 0; x < messages[y].length - largo; x++) {
+					if (messages[y][x] != "") {
+						return null;
+					}
+				}
+			}
+		}
+
 		ArrayList<String> mensaje = new ArrayList<String>();
 		boolean noEncontro;
 		for (int l = 0; l < largo; l++) {
@@ -27,9 +37,9 @@ public class MessageDecoder {
 			for (int y = 0; y < messages.length; y++) {
 
 				if (largo < messages[y].length) {
-					if (messages[y][l+(messages[y].length-largo)] != "") {
+					if (messages[y][l + (messages[y].length - largo)] != "") {
 						noEncontro = false;
-						mensaje.add(messages[y][l+messages[y].length-largo]);
+						mensaje.add(messages[y][l + messages[y].length - largo]);
 						break;
 					}
 				} else {
@@ -45,7 +55,7 @@ public class MessageDecoder {
 				return null;
 			}
 		}
-		return String.join(" ", mensaje);	
+		return String.join(" ", mensaje);
 	}
 
 }
