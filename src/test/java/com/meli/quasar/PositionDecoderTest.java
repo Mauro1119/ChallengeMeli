@@ -16,8 +16,15 @@ public class PositionDecoderTest {
 		
 		return Arrays.asList(new Object[][] {
 			{new float[] {(float)565.68, (float)360.55, (float)608.27}, new float[] {(float)-100, (float)200}},
-			{new float[] {(float)100, (float)100, (float)100}, new float[] {}}
-						
+			{new float[] {(float)1085.41, (float)626.99, (float)403.88}, new float[] {(float)350, (float)475}},
+			{new float[] {(float)0, (float)0, (float)0}, new float[] {}},
+			{new float[] {(float)100, (float)105.5, (float)142.7}, new float[] {}}, //ejemplo pdf
+			{new float[] {(float)583.09, (float)412.31, (float)781.02}, new float[] {(float)0, (float)-500}},
+			{new float[] {(float)538.516480, (float)141.421356, (float)509.901951}, new float[] {(float)0,(float)0}},
+			{new float[] {(float)100, (float)105.5, (float)142.7}, new float[] {}},
+			{new float[] {(float)100, (float)100, (float)100}, new float[] {}},
+			{new float[] {(float)100, (float)100}, new float[] {}},
+			{new float[] {}, new float[] {}}
 		});
 		
 	}

@@ -16,14 +16,31 @@ public class MessageDecoderTest {
 	@Parameters
 	public static Iterable<Object[]> getData() {		
 		return Arrays.asList(new Object[][] {
-			{new String[][]{{"este","", "un", "mensaje"},{"","es", "un", "mensaje"},{"","", "un", "mensaje"}}, "este es un mensaje"},
-			{new String[][]{{"","", "un", "mensaje"},{"","es", "un", "mensaje"},{"","", "un", "mensaje"}}, ""},
-			{new String[][]{{"","", "un", "mensaje"},{"","es", "un", "mensaje"},{"","", "un", "mensaje"}}, ""},
-			{new String[][]{{"","este","", "un", "mensaje"},{"","","","es", "un", "mensaje"},{"","", "un", "mensaje"}}, "este es un mensaje"},
-			{new String[][]{{""},{"","es", "un", "mensaje"},{"","", "un", "mensaje"}}, "mensaje"}, //ver este caso
+			{new String[][]{{"este","", "un", "mensaje"},
+							{"","es", "un", "mensaje"},
+							{"","", "un", "mensaje"}}, "este es un mensaje"},
+			{new String[][]{{"","", "un", "mensaje"},
+							{"","es", "un", "mensaje"},
+							{"","", "un", "mensaje"}}, ""},
+			{new String[][]{{"","", "un", "mensaje"},
+							{"","es", "un", "mensaje"},
+							{"","", "un", "mensaje"}}, ""},
+			{new String[][]{{"","este","", "un", "mensaje"},
+							{"","","","es", "un", "mensaje"},
+							{"","", "un", "mensaje"}}, "este es un mensaje"},
+			{new String[][]{{""},
+							{"","es", "un", "mensaje"},
+							{"","", "un", "mensaje"}}, "mensaje"}, //ver este caso
 			{new String[][]{{"","", "un", "mensaje"}}, ""},
 			{new String[][]{{"este","es", "un", "mensaje"}}, "este es un mensaje"},
-			{new String[][]{{"","", "", ""},{"","", "", ""},{"este","es", "un", "mensaje"}}, "este es un mensaje"} 
+			{new String[][]{{"","", "", ""},
+							{"","", "", ""},
+							{"este","es", "un", "mensaje"}}, "este es un mensaje"},
+			{new String[][]{{"","", "", ""},
+				{"","", "", ""},
+				{"este","es", "un", "mensaje"}}, "este es un mensaje"},
+			{new String[][]{}, ""},
+		
 		});
 	}
 	

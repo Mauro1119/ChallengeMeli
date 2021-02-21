@@ -9,6 +9,9 @@ public class PositionDecoder {
 		float d1, d2, d3, d, e, f, multi;
 
 		boolean sigueOk = true;
+		if (distances.length != 3) {
+			return new float[] {};
+		}
 
 		// Distancias entre los satelites.
 		d1 = (float) 670.8203; // Raiz de 450000
