@@ -11,17 +11,11 @@
 	</parent>
 	<groupId>meli.quasar</groupId>
 	<artifactId>Challenge</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>Challenge</name>
 	<description>Challenge tecnico</description>
 	<properties>
-		<!-- <java.version>11</java.version>  -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.target>1.8</maven.compiler.target>		
-		<maven.compiler.source>1.8</maven.compiler.source>	
-		<appengine.app.version>1</appengine.app.version>
-		<appengine.target.version>1.9.71</appengine.target.version>
-		<appengine-maven-plugin-version>1.3.2</appengine-maven-plugin-version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,12 +40,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<!-- <version>4.13.2</version> -->
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${appengine.target.version}</version>			
+			<!-- <version>4.13.2</version>  -->
 		</dependency>
 	</dependencies>
 
@@ -64,27 +53,18 @@
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
-				<version>${appengine-maven-plugin-version}</version>
+				<version>1.3.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.3</version> 
-				<!--  <configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
- -->			</plugin>
-<!--		<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version> 
+				<!-- <version>3.8.1</version> -->
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
-			</plugin> -->			
-		</plugins> 
-	 </build>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
