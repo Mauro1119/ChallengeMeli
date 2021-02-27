@@ -22,7 +22,8 @@ public class MensajesController {
 	
 	@Autowired
 	private Satellites sat;	
-
+	
+	private String AccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1hdXJvIE1hcm96emkiLCJpYXQiOjE1MTYyMzkwMjIsInByb2ZpbGUiOiJ0b2tlbiBwYXJhIENoYWxsZW5nZSB0ZWNuaWNvIn0.qcX9aLZfEqylFZMkW3CSCZAVBH3qsHIo0owxHHRqyqU";
 	
 	@RequestMapping(value="topsecret", method = RequestMethod.GET)
 	@ApiOperation(produces="application/json", 
