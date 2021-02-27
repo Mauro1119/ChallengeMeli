@@ -14,7 +14,7 @@ _Estas instrucciones te permitirán obtener una copia del proyecto para ejecutar
 * [IDE Spring Boot 4](https://spring.io/tools)
 * [JDK 8](https://www.oracle.com/ar/java/technologies/javase/javase-jdk8-downloads.html)
 * [Git Tools](https://git-scm.com/downloads)
-* [Postman] _Opcional_ (https://www.postman.com/)
+* [Postman](https://www.postman.com/) _Opcional_ 
 
 ### Obtener fuentes desde GitHub
 
