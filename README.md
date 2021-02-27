@@ -72,7 +72,7 @@ tal
 
 ## Autor
 
-**Mauro Marozzi** - [mauro1119](https://github.com/mauro1119)
+**Mauro Marozzi** -
 _mauromarozzi@gmail.com_
 
 
