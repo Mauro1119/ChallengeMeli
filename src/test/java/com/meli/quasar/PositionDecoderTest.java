@@ -24,6 +24,7 @@ public class PositionDecoderTest {
 			{new float[] {(float)100, (float)105.5, (float)142.7}, new float[] {}},
 			{new float[] {(float)100, (float)100, (float)100}, new float[] {}},
 			{new float[] {(float)100, (float)100}, new float[] {}},
+			{new float[] {(float)100}, new float[] {}},
 			{new float[] {}, new float[] {}}
 		});
 		
