@@ -64,11 +64,6 @@ Click derecho sobre el archivo PositionDecoderTest.java dentro del paquete src/t
 
 Click derecho sobre el archivo MessageDecoderTest.java dentro del paquete src/test/java/com/meli/quasar.
 
-## Despliegue 
-
-El sitio se encuentra desplegado en la dirección
-
-tal
 
 ## Autor
 
