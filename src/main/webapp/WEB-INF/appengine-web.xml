@@ -17,4 +17,5 @@ limitations under the License.
     <system-properties>
         <property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties"/>
     </system-properties>
+    <ssl-enabled>false</ssl-enabled>        
 </appengine-web-app>

@@ -121,7 +121,7 @@ public class MensajesController {
 		//Elimina todos los mensajes.
 		sat.setSatellites(null);
 		
-		return ResponseEntity.noContent().build(); //retornar posicion y mensaje
+		return ResponseEntity.noContent().build(); 
 	}
 	
 }
