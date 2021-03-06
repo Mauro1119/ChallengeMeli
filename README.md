@@ -19,7 +19,7 @@ _Estas instrucciones te permitirán obtener una copia del proyecto y ejecutarlo 
 
 ### Obtener fuentes desde GitHub
 
-_Posicionarse en donde se desee descargar el proyecto._
+_Abrir el gitCMD y posicionarse en donde se desee descargar el proyecto._
 
 ```
 git clone https://github.com/Mauro1119/ChallengeMeli
