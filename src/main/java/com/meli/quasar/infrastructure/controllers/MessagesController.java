@@ -30,7 +30,7 @@ public class MessagesController {
 					value = "Devuelve los mensajes recibidos.", 
 					httpMethod="GET", notes = "<br>Este servicio devuelve todos los mensajes recibidos.", 
 					response = Satellites.class)
-	public ResponseEntity<Satellites> getSatellites(@RequestHeader("accesstoken") String token) {
+	public ResponseEntity<Satellites> getSatellites(@RequestHeader("access_token") String token) {
 		if (!AccessToken.equals(token)) {
 			return ResponseEntity.status(403).build();
 		}
@@ -45,7 +45,7 @@ public class MessagesController {
 					httpMethod="POST", 
 					notes = "<br>Este servicio acepta todos los mensajes juntos y devuelve la información decodificada.", 
 					response = ResponseDecoded.class)
-	public ResponseEntity<ResponseDecoded> createSatellites(@RequestBody Satellites satellites, @RequestHeader("accesstoken") String token) {		
+	public ResponseEntity<ResponseDecoded> createSatellites(@RequestBody Satellites satellites, @RequestHeader("access_token") String token) {		
 		if (!AccessToken.equals(token)) {
 			return ResponseEntity.status(403).build();
 		}
@@ -67,7 +67,7 @@ public class MessagesController {
 					httpMethod="GET", 
 					notes = "<br>Este servicio devuelve la información decodificada, si es posible.", 
 					response = ResponseDecoded.class)
-	public ResponseEntity<ResponseDecoded> getResponseDecoded(@RequestHeader("accesstoken") String token) {	
+	public ResponseEntity<ResponseDecoded> getResponseDecoded(@RequestHeader("access_token") String token) {	
 		
 		if (!AccessToken.equals(token)) {
 			return ResponseEntity.status(403).build();
@@ -90,7 +90,7 @@ public class MessagesController {
 					value = "Enviar nuevo mensaje a un satelite especifico.", 
 					httpMethod="POST", 
 					notes = "<br>Este servicio envia la informacion de un satelite especificado y lo agrega a los ya existentes.")
-	public ResponseEntity<Void> createSatellite(@PathVariable("satelliteName") String satelliteName, @RequestBody UnicoSatellite satellite,@RequestHeader("accesstoken") String token) {		
+	public ResponseEntity<Void> createSatellite(@PathVariable("satelliteName") String satelliteName, @RequestBody UnicoSatellite satellite,@RequestHeader("access_token") String token) {		
 		if (!AccessToken.equals(token)) {
 			return ResponseEntity.status(403).build();
 		}
@@ -113,7 +113,7 @@ public class MessagesController {
 	@ApiOperation(produces="application/json", 
 					value = "Limpia todos los mensajes.", 
 					httpMethod="DELETE", notes = "<br>Este servicio elimina todos los mensajes guardados.")
-	public ResponseEntity<Void> cleanSatellites(@RequestHeader("accesstoken") String token) {		
+	public ResponseEntity<Void> cleanSatellites(@RequestHeader("access_token") String token) {		
 		if (!AccessToken.equals(token)) {
 			return ResponseEntity.status(403).build();
 		}
