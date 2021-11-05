@@ -1,4 +1,4 @@
-package com.meli.quasar.rest;
+package com.meli.quasar.infrastructure.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,18 +8,17 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.meli.quasar.Descifrador;
-import com.meli.quasar.entitys.ResponseDecoded;
-import com.meli.quasar.entitys.Satellite;
-import com.meli.quasar.entitys.Satellites;
-import com.meli.quasar.entitys.UnicoSatellite;
+
+import com.meli.quasar.application.decoder.*;
+import com.meli.quasar.application.resources.ResponseDecoded;
+import com.meli.quasar.domain.entities.*;
 
 import io.swagger.annotations.ApiOperation;
 
 
 @RestController
 @RequestMapping("/")
-public class MensajesController {
+public class MessagesController {
 	
 	@Autowired
 	private Satellites sat;	
@@ -53,7 +52,7 @@ public class MensajesController {
 		
 		sat = satellites;		
 		
-		ResponseDecoded resp = Descifrador.ProcesarInfo(sat);
+		ResponseDecoded resp = Decoder.ProcesarInfo(sat);
 		
 		if (resp == null) {
 			return ResponseEntity.notFound().build();
@@ -77,7 +76,7 @@ public class MensajesController {
 		if (sat.getSatellites() == null ) {
 			return ResponseEntity.notFound().build();
 		}
-		ResponseDecoded resp =  Descifrador.ProcesarInfo(sat);
+		ResponseDecoded resp =  Decoder.ProcesarInfo(sat);
 		if (resp == null) {
 			return ResponseEntity.notFound().build();
 		}

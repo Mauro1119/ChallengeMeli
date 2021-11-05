@@ -9,10 +9,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.meli.quasar.entitys.Position;
-import com.meli.quasar.entitys.ResponseDecoded;
-import com.meli.quasar.entitys.Satellite;
-import com.meli.quasar.entitys.Satellites;
+import com.meli.quasar.application.decoder.*;
+import com.meli.quasar.application.resources.ResponseDecoded;
+import com.meli.quasar.domain.entities.*;
 
 @RunWith(value = Parameterized.class)
 public class DescifradorTest {
@@ -112,7 +111,7 @@ public class DescifradorTest {
 
 	@Test
 	public void testProcesarInfo() {
-		ResponseDecoded respuesta = Descifrador.ProcesarInfo(sat);
+		ResponseDecoded respuesta = Decoder.ProcesarInfo(sat);
 
 		if (resp != null) {
 

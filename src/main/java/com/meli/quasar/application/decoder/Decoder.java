@@ -1,11 +1,12 @@
-package com.meli.quasar;
+package com.meli.quasar.application.decoder;
 
-import com.meli.quasar.entitys.Position;
-import com.meli.quasar.entitys.ResponseDecoded;
-import com.meli.quasar.entitys.Satellite;
-import com.meli.quasar.entitys.Satellites;
+import com.meli.quasar.application.resources.ResponseDecoded;
+import com.meli.quasar.domain.entities.*;
+//import com.meli.quasar.entitys.ResponseDecoded;
+//import com.meli.quasar.entitys.Satellite;
+//import com.meli.quasar.entitys.Satellites;
 
-public class Descifrador {
+public class Decoder {
 	public static ResponseDecoded ProcesarInfo(Satellites sat) {
 
 		ResponseDecoded resp = new ResponseDecoded();

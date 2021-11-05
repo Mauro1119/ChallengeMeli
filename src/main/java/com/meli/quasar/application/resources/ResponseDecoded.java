@@ -1,5 +1,6 @@
-package com.meli.quasar.entitys;
+package com.meli.quasar.application.resources;
 
+import com.meli.quasar.domain.entities.Position;
 
 public class ResponseDecoded {	
 	private Position position;

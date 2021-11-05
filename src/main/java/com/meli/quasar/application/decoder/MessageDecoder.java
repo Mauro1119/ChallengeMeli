@@ -1,4 +1,4 @@
-package com.meli.quasar;
+package com.meli.quasar.application.decoder;
 
 import java.util.ArrayList;
 

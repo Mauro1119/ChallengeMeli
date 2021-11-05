@@ -1,10 +1,17 @@
-package com.meli.quasar.entitys;
+package com.meli.quasar.domain.entities;
 
-public class UnicoSatellite {
+public class Satellite{
+	private String name;
 	private float distance;
 	private String[] message;
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public float getDistance() {
 		return distance;
 	}
@@ -17,4 +24,8 @@ public class UnicoSatellite {
 	public void setMessage(String[] message) {
 		this.message = message;
 	}
+	
+	
+	
+	
 }

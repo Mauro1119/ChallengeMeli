@@ -1,4 +1,4 @@
-package com.meli.quasar;
+package com.meli.quasar.application.decoder;
 
 /*Decodificador de la posición de la nave.*/
 

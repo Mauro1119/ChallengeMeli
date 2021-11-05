@@ -1,4 +1,4 @@
-package com.meli.quasar.entitys;
+package com.meli.quasar.domain.entities;
 
 import org.springframework.stereotype.Component;
 
