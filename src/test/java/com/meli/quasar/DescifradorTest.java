@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.meli.quasar.application.decoder.*;
 import com.meli.quasar.application.resources.ResponseDecoded;
+import com.meli.quasar.application.services.*;
 import com.meli.quasar.domain.entities.*;
 
 @RunWith(value = Parameterized.class)
@@ -111,7 +111,7 @@ public class DescifradorTest {
 
 	@Test
 	public void testProcesarInfo() {
-		ResponseDecoded respuesta = Decoder.ProcesarInfo(sat);
+		ResponseDecoded respuesta = DecoderService.ProcesarInfo(sat);
 
 		if (resp != null) {
 

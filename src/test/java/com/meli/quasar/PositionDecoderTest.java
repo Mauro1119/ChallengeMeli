@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.meli.quasar.application.decoder.PositionDecoder;
+import com.meli.quasar.application.services.PositionDecoderService;
 
 @RunWith (value = Parameterized.class)
 public class PositionDecoderTest {
@@ -43,7 +43,7 @@ public class PositionDecoderTest {
 	
 	@Test
 	public void testGetLocation() {
-		float[] resultado = PositionDecoder.GetLocation(distances);
+		float[] resultado = PositionDecoderService.GetLocation(distances);
 		if (resultado.length == 0) {
 			assertEquals(resul.length, resultado.length);				
 			

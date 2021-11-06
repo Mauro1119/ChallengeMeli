@@ -1,6 +1,6 @@
 package com.meli.quasar.domain.entities;
 
-public class Satellite{
+public class Satellite extends Spaceship {
 	private String name;
 	private float distance;
 	private String[] message;

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.meli.quasar.application.decoder.MessageDecoder;
+import com.meli.quasar.application.services.MessageDecoderService;
 
 
 @RunWith(value = Parameterized.class)
@@ -73,7 +73,7 @@ public class MessageDecoderTest {
 	@Test
 	public void testGetMessage() {
 		
-		assertEquals(exp, MessageDecoder.GetMessage(mensaje));
+		assertEquals(exp, MessageDecoderService.GetMessage(mensaje));
 	}
 
 }

@@ -1,0 +1,12 @@
+security:
+  accesstoken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1hdXJvIE1hcm96emkiLCJpYXQiOjE1MTYyMzkwMjIsInByb2ZpbGUiOiJ0b2tlbiBwYXJhIENoYWxsZW5nZSB0ZWNuaWNvIn0.qcX9aLZfEqylFZMkW3CSCZAVBH3qsHIo0owxHHRqyqU"
+satellites:
+  number: 3
+  0:
+    position:-500.0,-200.0
+  1:
+    position:100.0,-100.0
+  2:
+    position:500.0,100.0
+  
+    

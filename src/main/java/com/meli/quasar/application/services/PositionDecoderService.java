@@ -1,8 +1,10 @@
-package com.meli.quasar.application.decoder;
+package com.meli.quasar.application.services;
+
+import org.springframework.stereotype.Service;
 
 /*Decodificador de la posición de la nave.*/
-
-public class PositionDecoder {
+@Service
+public class PositionDecoderService {
 
 	public static float[] GetLocation(float... distances) {
 

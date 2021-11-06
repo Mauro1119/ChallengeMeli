@@ -1,6 +1,7 @@
 package com.meli.quasar.infrastructure.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.meli.quasar.application.decoder.*;
 import com.meli.quasar.application.resources.ResponseDecoded;
+import com.meli.quasar.application.services.*;
 import com.meli.quasar.domain.entities.*;
 
 import io.swagger.annotations.ApiOperation;
@@ -52,7 +53,7 @@ public class MessagesController {
 		
 		sat = satellites;		
 		
-		ResponseDecoded resp = Decoder.ProcesarInfo(sat);
+		ResponseDecoded resp = DecoderService.ProcesarInfo(sat);
 		
 		if (resp == null) {
 			return ResponseEntity.notFound().build();
@@ -76,7 +77,7 @@ public class MessagesController {
 		if (sat.getSatellites() == null ) {
 			return ResponseEntity.notFound().build();
 		}
-		ResponseDecoded resp =  Decoder.ProcesarInfo(sat);
+		ResponseDecoded resp =  DecoderService.ProcesarInfo(sat);
 		if (resp == null) {
 			return ResponseEntity.notFound().build();
 		}

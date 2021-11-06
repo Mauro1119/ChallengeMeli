@@ -1,10 +1,12 @@
-package com.meli.quasar.application.decoder;
+package com.meli.quasar.application.services;
 
 import java.util.ArrayList;
 
-/*Decodificador del mensaje.*/
+import org.springframework.stereotype.Service;
 
-public class MessageDecoder {
+/*Decodificador del mensaje.*/
+@Service
+public class MessageDecoderService {
 
 	public static String GetMessage(String[]... messages) {
 

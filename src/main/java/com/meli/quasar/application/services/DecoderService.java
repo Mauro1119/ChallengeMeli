@@ -1,12 +1,12 @@
-package com.meli.quasar.application.decoder;
+package com.meli.quasar.application.services;
+
+import org.springframework.stereotype.Service;
 
 import com.meli.quasar.application.resources.ResponseDecoded;
 import com.meli.quasar.domain.entities.*;
-//import com.meli.quasar.entitys.ResponseDecoded;
-//import com.meli.quasar.entitys.Satellite;
-//import com.meli.quasar.entitys.Satellites;
 
-public class Decoder {
+@Service
+public class DecoderService {
 	public static ResponseDecoded ProcesarInfo(Satellites sat) {
 
 		ResponseDecoded resp = new ResponseDecoded();
@@ -39,7 +39,7 @@ public class Decoder {
 		}
 
 		if (err == 0) {
-			float[] posiciones = PositionDecoder.GetLocation(distancias);
+			float[] posiciones = PositionDecoderService.GetLocation(distancias);
 
 			if (posiciones.length == 0) {
 				err = 1;
@@ -53,7 +53,7 @@ public class Decoder {
 					mensajes[i] = sat.getSatellites()[i].getMessage();
 				}
 
-				String mens = MessageDecoder.GetMessage(mensajes);
+				String mens = MessageDecoderService.GetMessage(mensajes);
 				if (mens == null) {
 					err = 1;
 				} else {
