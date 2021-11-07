@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
 /*Decodificador del mensaje.*/
-@Service
+
 public class MessageDecoderService {
 
 	public static String GetMessage(String[]... messages) {

@@ -5,18 +5,18 @@ import org.springframework.stereotype.Service;
 import com.meli.quasar.application.resources.ResponseDecoded;
 import com.meli.quasar.domain.entities.*;
 
-@Service
+
 public class DecoderService {
 	public static ResponseDecoded ProcesarInfo(Satellites sat) {
 
 		ResponseDecoded resp = new ResponseDecoded();
-		float[] distancias = new float[3];
+		double[] distancias = new double[3];
 		String[][] mensajes;
 		int err = 0;
 
 		// var respuesta responseDecoded
 		if (sat.getSatellites().length == 3) {
-			float dist = Find(sat.getSatellites(), "Kenobi");
+			double dist = Find(sat.getSatellites(), "Kenobi");
 			if (dist >= 0) {
 				distancias[0] = dist;
 			} else {
@@ -39,7 +39,7 @@ public class DecoderService {
 		}
 
 		if (err == 0) {
-			float[] posiciones = PositionDecoderService.GetLocation(distancias);
+			double[] posiciones = PositionDecoderService.GetLocation(distancias);
 
 			if (posiciones.length == 0) {
 				err = 1;
@@ -72,7 +72,7 @@ public class DecoderService {
 
 	}
 
-	private static float Find(Satellite[] sats, String nombre) {
+	private static double Find(Satellite[] sats, String nombre) {
 		for (int i = 0; i < sats.length; i++) {
 			if (sats[i].getName().toUpperCase().equals(nombre.toUpperCase())){
 				return sats[i].getDistance();

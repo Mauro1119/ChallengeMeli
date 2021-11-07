@@ -1,11 +1,31 @@
 package com.meli.quasar.application.services;
 
+import org.apache.commons.math3.fitting.leastsquares.LevenbergMarquardtOptimizer;
+import org.apache.commons.math3.linear.SingularMatrixException;
 import org.springframework.stereotype.Service;
+import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
+import com.lemmingapex.trilateration.TrilaterationFunction;
 
 /*Decodificador de la posición de la nave.*/
-@Service
 public class PositionDecoderService {
 
+	public static double[] GetLocation(double... distances) {
+		double[][] positions = new double[][] {{-500.0,-200.0},{100.0,-100.0},{500.0,100.0}};
+		try {		
+			TrilaterationFunction trilaterationFunction = new TrilaterationFunction(positions, distances);
+			NonLinearLeastSquaresSolver nSolver = new NonLinearLeastSquaresSolver(trilaterationFunction, new LevenbergMarquardtOptimizer());
+			return  nSolver.solve().getPoint().toArray();	
+		} catch (SingularMatrixException e) {
+			return new double[] {};
+		} catch (Exception e) {
+			return new double[] {};
+		}
+		
+
+        
+	}
+	
+	/*
 	public static float[] GetLocation(float... distances) {
 
 		float d1, d2, d3, d, e, f, multi;
@@ -120,5 +140,5 @@ public class PositionDecoderService {
 		}
 
 		return new float[] { M[0][2], M[1][2] };
-	}
-}
+	}*/
+} 

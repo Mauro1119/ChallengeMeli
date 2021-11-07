@@ -24,13 +24,13 @@ public class DescifradorTest {
 						NuevoSatellite("Skywalker", 0, new String[] { "este", "", "", "mensaje", "", "" }),
 						NuevoSatellite("Sato", 0, new String[] { "este", "", "", "mensaje", "", "" })), null },
 				{ GenerarSatellites(
-						NuevoSatellite("Kenobi", (float) 565.68,
+						NuevoSatellite("Kenobi", (double) 565.68,
 								new String[] { "este", "es", "", "mensaje", "", "secreto" }),
-						NuevoSatellite("Skywalker", (float) 360.55,
+						NuevoSatellite("Skywalker", (double) 360.55,
 								new String[] { "este", "", "un", "mensaje", "", "" }),
-						NuevoSatellite("Sato", (float) 608.27,
+						NuevoSatellite("Sato", (double) 608.27,
 								new String[] { "este", "", "", "mensaje", "ultra", "" })),
-						RespuestaEsperada(new float[] { -100, 200 }, "este es un mensaje ultra secreto") },
+						RespuestaEsperada(new double[] { -100, 200 }, "este es un mensaje ultra secreto") },
 				{ GenerarSatellites(
 						NuevoSatellite("Kenobi", (float) 1085.41,
 								new String[] { "", "es", "", "mensaje", "", "secreto" }),
@@ -46,10 +46,11 @@ public class DescifradorTest {
 				{ GenerarSatellites(
 						NuevoSatellite("Kenobi", (float) 100,
 								new String[] { "este", "es", "", "mensaje", "", "secreto" }),
-						NuevoSatellite("Skywalker", (float) 105.5,
+						NuevoSatellite("Skywalker", (float) 115.5,
 								new String[] { "este", "", "un", "mensaje", "", "" }),
 						NuevoSatellite("Sato", (float) 142.7,
-								new String[] { "este", "", "", "mensaje", "ultra", "" })),null },
+								new String[] { "este", "", "", "mensaje", "ultra", "" })),
+						RespuestaEsperada(new double[] { -58.31, -69.55 }, "este es un mensaje ultra secreto") },
 				{ GenerarSatellites(
 						NuevoSatellite("Kenobi", (float) 583.09,
 								new String[] { "este", "es", "", "mensaje", "", "secreto" }),
@@ -57,7 +58,7 @@ public class DescifradorTest {
 								new String[] { "este", "", "un", "mensaje", "", "" }),
 						NuevoSatellite("Sato", (float) 781.02,
 								new String[] { "este", "", "", "mensaje", "ultra", "" })),
-						RespuestaEsperada(new float[] { 0, -500 }, "este es un mensaje ultra secreto") },
+						RespuestaEsperada(new double[] { 0, -500 }, "este es un mensaje ultra secreto") },
 				{ GenerarSatellites(
 						NuevoSatellite("Kenobi", (float) 565.68,
 								new String[] { "este", "es", "", "mensaje", "", "secreto" }),
@@ -67,11 +68,11 @@ public class DescifradorTest {
 								new String[] { "este", "", "", "mensaje", "ultra", "" }),
 						NuevoSatellite("Otro", (float) 608.27,
 								new String[] { "este", "", "", "mensaje", "ultra", "" })),
-						RespuestaEsperada(new float[] { -100, 200 }, "este es un mensaje ultra secreto")}});
+						RespuestaEsperada(new double[] { -100, 200 }, "este es un mensaje ultra secreto")}});
 
 	}
 
-	private static ResponseDecoded RespuestaEsperada(float[] coord, String mensaje) {
+	private static ResponseDecoded RespuestaEsperada(double[] coord, String mensaje) {
 		ResponseDecoded resp = new ResponseDecoded();
 		Position pos = new Position();
 		pos.setXY(coord);
@@ -81,10 +82,10 @@ public class DescifradorTest {
 		return resp;
 	}
 
-	private static Satellite NuevoSatellite(String nombre, float distancia, String[] mensaje) {
+	private static Satellite NuevoSatellite(String nombre, double d, String[] mensaje) {
 		Satellite sat = new Satellite();
 		sat.setName(nombre);
-		sat.setDistance(distancia);
+		sat.setDistance(d);
 		sat.setMessage(mensaje);
 
 		return sat;

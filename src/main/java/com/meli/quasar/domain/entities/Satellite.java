@@ -1,8 +1,8 @@
 package com.meli.quasar.domain.entities;
 
-public class Satellite extends Spaceship {
+public class Satellite {
 	private String name;
-	private float distance;
+	private double distance;
 	private String[] message;
 	
 	
@@ -12,11 +12,11 @@ public class Satellite extends Spaceship {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public float getDistance() {
+	public double getDistance() {
 		return distance;
 	}
-	public void setDistance(float distance) {
-		this.distance = distance;
+	public void setDistance(double d) {
+		this.distance = d;
 	}
 	public String[] getMessage() {
 		return message;
