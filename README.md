@@ -64,6 +64,11 @@ Click derecho sobre el archivo PositionDecoderTest.java dentro del paquete src/t
 
 Click derecho sobre el archivo MessageDecoderTest.java dentro del paquete src/test/java/com/meli/quasar.
 
+## Fuentes
+Para la localización de las coordenadas de la nave se utilizó un paquete externo. Se provee el link de GitHub correspondiente.
+
+https://github.com/lemmingapex/trilateration.git
+
 
 ## Autor
 
