@@ -1,14 +1,15 @@
-package com.meli.quasar.domain.entities;
+package com.meli.quasar.application.resources;
 
-public class UnicoSatellite {
-	private float distance;
+public class MessageDto {
+	
+	private double distance;
 	private String[] message;
 	
 	
-	public float getDistance() {
+	public double getDistance() {
 		return distance;
 	}
-	public void setDistance(float distance) {
+	public void setDistance(double distance) {
 		this.distance = distance;
 	}
 	public String[] getMessage() {
@@ -17,4 +18,5 @@ public class UnicoSatellite {
 	public void setMessage(String[] message) {
 		this.message = message;
 	}
+
 }

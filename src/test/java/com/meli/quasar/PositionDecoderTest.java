@@ -43,7 +43,8 @@ public class PositionDecoderTest {
 	
 	@Test
 	public void testGetLocation() {
-		double[] resultado = PositionDecoderService.GetLocation(distances);
+		double[][] positions = new double[][] {{-500.0,-200.0},{100.0,-100.0},{500.0,100.0}};
+		double[] resultado = PositionDecoderService.GetLocation(positions, distances);
 		if (resultado.length == 0) {
 			assertEquals(resul.length, resultado.length);				
 			

@@ -1,85 +1,76 @@
 package com.meli.quasar.application.services;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.meli.quasar.application.resources.ResponseDecoded;
+import com.meli.quasar.application.resources.SatellitesDto;
+import com.meli.quasar.application.resources.mapper.ResponseDecodedMap;
+import com.meli.quasar.application.resources.mapper.SatellitesDtoMap;
 import com.meli.quasar.domain.entities.*;
 
 
+@Component
 public class DecoderService {
-	public static ResponseDecoded ProcesarInfo(Satellites sat) {
+	
+	private SatellitesDtoMap satellitesMap;
+	private ResponseDecodedMap responseDecodedMap;
+	
+	
+	public DecoderService(SatellitesDtoMap satellitesDtoMap, ResponseDecodedMap responseDecodesMap) {
+		this.satellitesMap = satellitesDtoMap;
+		this.responseDecodedMap = responseDecodesMap;
+	}
+	
+	
+	public ResponseDecoded ProcesarInfo(SatellitesDto satellites) {
+		//map
+		
+		Satellites sat = satellitesMap.SatellitesDtoMapping(satellites);
+		 
+//		Satellites sat = satellites;		
 
-		ResponseDecoded resp = new ResponseDecoded();
-		double[] distancias = new double[3];
-		String[][] mensajes;
-		int err = 0;
+		//ResponseDecoded resp = new ResponseDecoded();
+		//String[][] mensajes;
+		
+//		int err = 0;
 
 		// var respuesta responseDecoded
-		if (sat.getSatellites().length == 3) {
-			double dist = Find(sat.getSatellites(), "Kenobi");
-			if (dist >= 0) {
-				distancias[0] = dist;
-			} else {
-				err = 1;
-			}
 			dist = Find(sat.getSatellites(), "Skywalker");
-			if (dist >= 0) {
-				distancias[1] = dist;
-			} else {
-				err = 1;
-			}
-			dist = Find(sat.getSatellites(), "Sato");
-			if (dist >= 0) {
-				distancias[2] = dist;
-			} else {
-				err = 1;
-			}
-		} else {
-			err = 1;
-		}
+		if (sat.getSatellites().size() == 3) {
+	//		err = 1; 
+		
+		
+			EnemyCharger enemyCharger = new EnemyCharger();
+			//if (err == 0) {			
+			enemyCharger.setPosition(new Position(PositionDecoderService.GetLocation(sat.getPosition(),sat.getDistances())));
 
-		if (err == 0) {
-			double[] posiciones = PositionDecoderService.GetLocation(distancias);
-
-			if (posiciones.length == 0) {
-				err = 1;
-			} else {
-				Position pos = new Position();
-				pos.setXY(posiciones);
-				resp.setPos(pos);
-
-				mensajes = new String[3][];
-				for (int i = 0; i < sat.getSatellites().length; i++) {
-					mensajes[i] = sat.getSatellites()[i].getMessage();
+			if (enemyCharger.getPosition() != null) {
+				enemyCharger.setMessage(MessageDecoderService.GetMessage(sat.getMessages()));
+				if (enemyCharger.getMessage() != null) {
+					return responseDecodedMap.ResponseDecodedMapping(enemyCharger);
 				}
-
-				String mens = MessageDecoderService.GetMessage(mensajes);
-				if (mens == null) {
+				
+			}
+			/*
+				if (enemyCharger.getPosition() == null) {
 					err = 1;
 				} else {
-					resp.setMessage(mens);
-				}
-			}
-		} else {
-			err = 1;
+					enemyCharger.setMessage(MessageDecoderService.GetMessage(sat.getMessages()));
+					if (enemyCharger.getMessage() == null) {
+						err = 1;
+					} 
+				}*/
+	//		} 
 		}
-
-		if (err != 1) {
-			return resp;
+		return null;
+		
+		/*if (err != 1) {
+			//map responsocode
+			return responseDecodedMap.ResponseDecodedMapping(enemyCharger);
+			//return resp;
 		} else {
 			return null;
-		}
+		} */
 
 	}
-
-	private static double Find(Satellite[] sats, String nombre) {
-		for (int i = 0; i < sats.length; i++) {
-			if (sats[i].getName().toUpperCase().equals(nombre.toUpperCase())){
-				return sats[i].getDistance();
-			}
-		}
-		return -1; //No encontrado
-
-	}
-
 }

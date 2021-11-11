@@ -1,18 +1,25 @@
 package com.meli.quasar.infrastructure.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.meli.quasar.application.exceptions.SatelliteNotFoundException;
+import com.meli.quasar.application.resources.MessageDto;
 import com.meli.quasar.application.resources.ResponseDecoded;
+import com.meli.quasar.application.resources.SatelliteDto;
+import com.meli.quasar.application.resources.SatellitesDto;
+
 import com.meli.quasar.application.services.*;
-import com.meli.quasar.domain.entities.*;
+
 
 import io.swagger.annotations.ApiOperation;
 
@@ -21,23 +28,14 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/")
 public class MessagesController {
 	
+	
 	@Autowired
-	private Satellites sat;	
+	private SatellitesDto satellitesDto;
 	
-	private String AccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1hdXJvIE1hcm96emkiLCJpYXQiOjE1MTYyMzkwMjIsInByb2ZpbGUiOiJ0b2tlbiBwYXJhIENoYWxsZW5nZSB0ZWNuaWNvIn0.qcX9aLZfEqylFZMkW3CSCZAVBH3qsHIo0owxHHRqyqU";
+	ResponseDecoded responseDecoded;
 	
-	@RequestMapping(value="topsecret", method = RequestMethod.GET)
-	@ApiOperation(produces="application/json", 
-					value = "Devuelve los mensajes recibidos.", 
-					httpMethod="GET", notes = "<br>Este servicio devuelve todos los mensajes recibidos.", 
-					response = Satellites.class)
-	public ResponseEntity<Satellites> getSatellites(@RequestHeader("access_token") String token) {
-		if (!AccessToken.equals(token)) {
-			return ResponseEntity.status(403).build();
-		}
-		
-		return ResponseEntity.ok(sat);
-	}
+	@Autowired
+	private DecoderService decoderService;
 	
 	
 	@RequestMapping (value="topsecret", method = RequestMethod.POST)
@@ -46,17 +44,11 @@ public class MessagesController {
 					httpMethod="POST", 
 					notes = "<br>Este servicio acepta todos los mensajes juntos y devuelve la información decodificada.", 
 					response = ResponseDecoded.class)
-	public ResponseEntity<ResponseDecoded> createSatellites(@RequestBody Satellites satellites, @RequestHeader("access_token") String token) {		
-		if (!AccessToken.equals(token)) {
-			return ResponseEntity.status(403).build();
-		}
-		
-		sat = satellites;		
-		
-		ResponseDecoded resp = DecoderService.ProcesarInfo(sat);
-		
+	public ResponseEntity<ResponseDecoded> createSatellites(@RequestBody SatellitesDto satellites) {
+		ResponseDecoded resp = decoderService.ProcesarInfo(satellites);
+
 		if (resp == null) {
-			return ResponseEntity.notFound().build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		return ResponseEntity.ok(resp); //retornar posicion y mensaje
 	}
@@ -68,16 +60,13 @@ public class MessagesController {
 					httpMethod="GET", 
 					notes = "<br>Este servicio devuelve la información decodificada, si es posible.", 
 					response = ResponseDecoded.class)
-	public ResponseEntity<ResponseDecoded> getResponseDecoded(@RequestHeader("access_token") String token) {	
+	public ResponseEntity<ResponseDecoded> getResponseDecoded() {	
 		
-		if (!AccessToken.equals(token)) {
-			return ResponseEntity.status(403).build();
-		}
 		//por si no se cargaron mensajes.
-		if (sat.getSatellites() == null ) {
+		if (satellitesDto.getSatellites() == null ) {
 			return ResponseEntity.notFound().build();
 		}
-		ResponseDecoded resp =  DecoderService.ProcesarInfo(sat);
+		ResponseDecoded resp =  decoderService.ProcesarInfo(satellitesDto);
 		if (resp == null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -91,37 +80,20 @@ public class MessagesController {
 					value = "Enviar nuevo mensaje a un satelite especifico.", 
 					httpMethod="POST", 
 					notes = "<br>Este servicio envia la informacion de un satelite especificado y lo agrega a los ya existentes.")
-	public ResponseEntity<Void> createSatellite(@PathVariable("satelliteName") String satelliteName, @RequestBody UnicoSatellite satellite,@RequestHeader("access_token") String token) {		
-		if (!AccessToken.equals(token)) {
-			return ResponseEntity.status(403).build();
-		}
-		Satellite satUnico = new Satellite();
-		satUnico.setName(satelliteName);	
-		satUnico.setDistance(satellite.getDistance());
-		satUnico.setMessage(satellite.getMessage());
+	public ResponseEntity<Void> createSatellite(@PathVariable("satelliteName") String satelliteName, @RequestBody MessageDto messageDto) {		
 		
-		if (!sat.addSatellite(satUnico)) {
-			//throw new SatelliteNotFoundException("Demasiados satelites");
-			return ResponseEntity.unprocessableEntity().build();
+		SatelliteDto satelliteDto = new SatelliteDto();
+		satelliteDto.setName(satelliteName);
+		satelliteDto.setMessage(messageDto.getMessage());
+		satelliteDto.setDistance(messageDto.getDistance());
+		
+		if (!satellitesDto.addSatellite(satelliteDto)) {
+			throw new SatelliteNotFoundException("No se puede agregar el satellite");
+			//return ResponseEntity.unprocessableEntity().build();
 		};				
-		//Obtener posicion y mensaje		
-		//throw new SatelliteNotFoundException("Demasiados satelites");
+
 		return ResponseEntity.ok(null); 
 	}
 	
-	
-	@RequestMapping (value="topsecret", method = RequestMethod.DELETE)
-	@ApiOperation(produces="application/json", 
-					value = "Limpia todos los mensajes.", 
-					httpMethod="DELETE", notes = "<br>Este servicio elimina todos los mensajes guardados.")
-	public ResponseEntity<Void> cleanSatellites(@RequestHeader("access_token") String token) {		
-		if (!AccessToken.equals(token)) {
-			return ResponseEntity.status(403).build();
-		}
-		//Elimina todos los mensajes.
-		sat.setSatellites(null);
-		
-		return ResponseEntity.noContent().build(); 
-	}
-	
+
 }

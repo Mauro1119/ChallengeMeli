@@ -1,7 +1,10 @@
 package com.meli.quasar.application.resources;
 
+import org.springframework.stereotype.Component;
+
 import com.meli.quasar.domain.entities.Position;
 
+@Component
 public class ResponseDecoded {	
 	private Position position;
 	private String message;
