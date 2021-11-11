@@ -23,25 +23,14 @@ public class DecoderService {
 	
 	
 	public ResponseDecoded ProcesarInfo(SatellitesDto satellites) {
-		//map
+
 		
 		Satellites sat = satellitesMap.SatellitesDtoMapping(satellites);
 		 
-//		Satellites sat = satellites;		
-
-		//ResponseDecoded resp = new ResponseDecoded();
-		//String[][] mensajes;
-		
-//		int err = 0;
-
 		// var respuesta responseDecoded
-			dist = Find(sat.getSatellites(), "Skywalker");
-		if (sat.getSatellites().size() == 3) {
-	//		err = 1; 
-		
+		if (sat.getSatellites().size() == 3) {	
 		
 			EnemyCharger enemyCharger = new EnemyCharger();
-			//if (err == 0) {			
 			enemyCharger.setPosition(new Position(PositionDecoderService.GetLocation(sat.getPosition(),sat.getDistances())));
 
 			if (enemyCharger.getPosition() != null) {
@@ -51,26 +40,10 @@ public class DecoderService {
 				}
 				
 			}
-			/*
-				if (enemyCharger.getPosition() == null) {
-					err = 1;
-				} else {
-					enemyCharger.setMessage(MessageDecoderService.GetMessage(sat.getMessages()));
-					if (enemyCharger.getMessage() == null) {
-						err = 1;
-					} 
-				}*/
-	//		} 
+
 		}
 		return null;
-		
-		/*if (err != 1) {
-			//map responsocode
-			return responseDecodedMap.ResponseDecodedMapping(enemyCharger);
-			//return resp;
-		} else {
-			return null;
-		} */
+
 
 	}
 }
