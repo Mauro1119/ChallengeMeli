@@ -1,5 +1,9 @@
 package com.meli.quasar.application.resources;
+/**
 
+* Representa un mensaje enviado a un satellite determinado.
+
+*/
 public class MessageDto {
 	
 	private double distance;

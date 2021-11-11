@@ -11,7 +11,7 @@ import com.meli.quasar.domain.entities.Satellites;
 
 /**
 
-* Esta clase mapea una lista de SatellitesDto a devolviendo una lista de Satellites
+* Mape una lista de SatellitesDto a devolviendo una lista de Satellites
 
 */
 

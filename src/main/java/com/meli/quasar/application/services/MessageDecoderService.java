@@ -2,8 +2,11 @@ package com.meli.quasar.application.services;
 
 import java.util.ArrayList;
 
-/*Decodificador del mensaje.*/
+/**
 
+* Decodificador del mensaje.
+
+*/
 public class MessageDecoderService {
 
 	public static String GetMessage(String[]... messages) {

@@ -8,7 +8,11 @@ import com.meli.quasar.application.resources.mapper.ResponseDecodedMap;
 import com.meli.quasar.application.resources.mapper.SatellitesDtoMap;
 import com.meli.quasar.domain.entities.*;
 
+/**
 
+* Realiza la decodificación del mensaje enviado y la posición de la nave.
+
+*/
 @Component
 public class DecoderService {
 	

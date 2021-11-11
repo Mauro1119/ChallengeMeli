@@ -5,8 +5,11 @@ import org.apache.commons.math3.linear.SingularMatrixException;
 
 import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
 import com.lemmingapex.trilateration.TrilaterationFunction;
+/**
 
-/*Decodificador de la posición de la nave.*/
+* Decodificador de la posición de la nave.
+
+*/
 public class PositionDecoderService {
 
 	public static double[] GetLocation(double[][] positions, double... distances) {

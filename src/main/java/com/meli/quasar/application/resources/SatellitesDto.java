@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+/**
 
+* Representa un lista de LatellitesDto
+*/
 @Component
 public class SatellitesDto {
 	private List<SatelliteDto> satellites;
@@ -23,6 +26,12 @@ public class SatellitesDto {
 		this.satellites = satellites;
 	}
 
+	/**
+
+	* Agrega un satellite a la lista. Si existe lo reemplaza, de lo contrario lo agrega a al final.
+	* Si no lo puede agregar devuelve falso.
+
+	*/
 	public boolean addSatellite(SatelliteDto satelliteDto) {
 		
 		if (satellites == null) {			

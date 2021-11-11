@@ -7,7 +7,7 @@ import com.meli.quasar.domain.entities.Satellite;
 
 /**
 
-* Esta clase mapea un SatelliteDto devolviendo un Satellite
+* Mapea un SatelliteDto devolviendo un Satellite
 
 */
 

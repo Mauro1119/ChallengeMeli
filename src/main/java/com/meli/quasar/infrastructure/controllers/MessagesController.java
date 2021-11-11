@@ -63,8 +63,8 @@ public class MessagesController {
 	public ResponseEntity<ResponseDecoded> getResponseDecoded() {	
 		
 		//por si no se cargaron mensajes.
-		if (satellitesDto.getSatellites() == null ) {
-			return ResponseEntity.notFound().build();
+		if (satellitesDto.getSatellites().size() != 3 ) {
+			throw new SatelliteNotFoundException("No se puede agregar el satellite");
 		}
 		ResponseDecoded resp =  decoderService.ProcesarInfo(satellitesDto);
 		if (resp == null) {
@@ -88,8 +88,8 @@ public class MessagesController {
 		satelliteDto.setDistance(messageDto.getDistance());
 		
 		if (!satellitesDto.addSatellite(satelliteDto)) {
-			throw new SatelliteNotFoundException("No se puede agregar el satellite");
-			//return ResponseEntity.unprocessableEntity().build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
 		};				
 
 		return ResponseEntity.ok(null); 

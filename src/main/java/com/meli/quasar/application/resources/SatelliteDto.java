@@ -1,24 +1,13 @@
 package com.meli.quasar.application.resources;
 
+/**
 
-public class SatelliteDto {
+* Representa un SatelliteDto, para transferencia con la capa de infraestructura.
+
+*/
+public class SatelliteDto extends MessageDto{
 	private String name;	
-	private double distance;
-	private String[] message;
-	
-	
-	public double getDistance() {
-		return distance;
-	}
-	public void setDistance(double distance) {
-		this.distance = distance;
-	}
-	public String[] getMessage() {
-		return message;
-	}
-	public void setMessage(String[] message) {
-		this.message = message;
-	}
+
 	public String getName() {
 		return name;
 	}

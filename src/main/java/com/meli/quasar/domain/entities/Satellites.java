@@ -6,7 +6,11 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 
+/**
 
+* Representa una lista de satellites.
+
+*/
 @Component
 public class Satellites {
 	private List<Satellite> satellites;
@@ -23,7 +27,11 @@ public class Satellites {
 		this.satellites = satellites;
 	}
 
-	
+	/**
+
+	* Retorna las posiciones de las naves, ordenadas (KENOBI,SKYWALKER,SATO)
+
+	*/
 	public double[][] getPosition(){
 		double[][] positions = new double[satellites.size()][2];
 		for (int i = 0; i < satellites.size(); i++) {
@@ -47,6 +55,11 @@ public class Satellites {
 		return positions;
 	}
 	
+	/**
+
+	* Agrega un satellite a la lista, con su respectiva posición.
+
+	*/
 	public boolean addSatellite(Satellite satellite) {		
 		//{-500.0,-200.0},{100.0,-100.0},{500.0,100.0}
 		if (satellite.getName().toUpperCase().equals("Kenobi".toUpperCase())) {
@@ -91,11 +104,18 @@ public class Satellites {
 	}
 
 	
-    public double[] getDistances(){
+	/**
+
+	* Retorna las distancias a cada satellite de los mensajes enviados
+	* ordenadas (KENOBI,SKYWALKER,SATO)
+
+	*/
+	public double[] getDistances(){
 
         double [] distances = new double[satellites.size()];
        
 		for (int i = 0; i < satellites.size(); i++) {
+			
 			if (i==0) {
 				distances[i] = satellites.get(FindSatelliteInArray("Kenobi")).getDistance();
 			}
@@ -111,6 +131,11 @@ public class Satellites {
         return  distances;
     }
     
+	/**
+
+	* Retorna los mensajes enviados a cada satellite
+
+	*/
     public String[][] getMessages(){
         String[][] messages = new String[satellites.size()][];
         for(int i = 0; i < satellites.size(); i++){
